@@ -9,7 +9,7 @@ const Footer = () => {
                     <p><BsInstagram /></p>
                     <p className="menadeco">MENADECO</p>
                 </a>
-                <p className="text-center">Contactanos : mena.deco14@gmail.com</p>
+                <p className="text-center mt-3">Contactanos: mena.deco14@gmail.com</p>
                 <p className="text-center">COPYRIGHT MENADECO - 2023. TODOS LOS DERECHOS RESERVADOS. </p>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import albumRosa from "./images/productos/paraCarrousel/albumRosa.jpg"
-import colgador from "./images/productos/paraCarrousel/colgador.jpg"
+import perchero from "./images/productos/paraCarrousel/perchero.jpg"
 import morado from "./images/productos/paraCarrousel/morado.jpg";
 import productos from "./images/productos/paraCarrousel/productos.jpg";
 import Carousel from 'react-bootstrap/Carousel';
@@ -16,18 +16,18 @@ function MyCarousel() {
                 />
                 <Carousel.Caption>
                     <h3>Albumnes personalizados.</h3>
-                    <p>¡Albumnes de la tematica que quieras!</p>
+                    <p>¡Albumnes de la temática que quieras!</p>
                 </Carousel.Caption>
             </Carousel.Item>
                 <Carousel.Item className="carouselItem">
                 <img
                     className="d-block w-100"
-                    src={colgador}
+                    src={perchero}
                     alt="Second slide"
                 />
                 <Carousel.Caption>
-                    <h3>Colgadores</h3>
-                    <p>Excelentes colgadores para completar tu hogar.</p>
+                    <h3>Percheros</h3>
+                        <p>Excelentes percheros para completar tu hogar.</p>
                 </Carousel.Caption>
             </Carousel.Item>
                 <Carousel.Item className="carouselItem">
@@ -52,7 +52,7 @@ function MyCarousel() {
                     <Carousel.Caption>
                         <h3>Muchos productos mas</h3>
                         <p>
-                            ¡No te los pierdas!.
+                            ¡No te los pierdas!
                         </p>
                     </Carousel.Caption>
                 </Carousel.Item>
