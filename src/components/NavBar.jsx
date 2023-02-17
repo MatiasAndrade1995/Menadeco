@@ -1,32 +1,48 @@
-import logo from "./images/productos/logos/logoMenadeco.png"
+import logo from "./images/logos/logoMenadeco.png";
 import CartWidget from "./CartWidget";
-import MyCarousel from "./MyCarousel";
+import { NavLink } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ cart }) => {
     return (
         <div className="container-fluid">
             <div className="row justify-content-center p-1 mb-2 bg-light text-dark">
                 <div className="col-10 d-flex aling-items-center justify-content-between">
                     <nav className="navbar">
-                        <a className="navbar-brand" href={"/"}><img src={logo} width="200" alt="logoMenadeco" /> </a>
-                        <a className="navbar-brand" href={"/"}>INICIO</a>
-                        <a className="navbar-brand" href={"/"}>PRODUCTOS</a>
-                        <a className="navbar-brand" href={"/"}>SAN VALENTÍN</a>
-                        <a className="navbar-brand" href={"/"}>ÁLBUMNES DE FIGURITAS</a>
-                        <a className="navbar-brand" href={"/"}>CONTACTO</a>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Buscar producto..." aria-label="Search" />
-                            <button class="btn btn-secondary" type="submit">Buscar</button>
-                        </form>
+                        <NavLink classnameactive="active" className="navbar-brand" to="/">
+                            <img src={logo} width="200" alt="logoMenadeco" />{""}
+                        </NavLink>
+                        <NavLink className="navbar-brand" to="/">
+                            INICIO
+                        </NavLink>
+                        <NavLink className="navbar-brand" to="/category/album">
+                            ALBUMNES
+                        </NavLink>
+                        <NavLink className="navbar-brand" to="/category/cuadros">
+                            CUADROS
+                        </NavLink>
+                        <NavLink className="navbar-brand" to="/category/percheros">
+                            PERCHEROS
+                        </NavLink>
+                        <div className="d-flex containerSearch">
+                            <form className="d-flex" role="search">
+                                <input
+                                    className="form-control me-2"
+                                    type="search"
+                                    placeholder="Buscar producto..."
+                                    aria-label="Search"
+                                />
+                                <button className="btn btn-secondary" type="submit">
+                                    Buscar
+                                </button>
+                            </form>
+                        </div>
                     </nav>
                 </div>
                 <div className="col-1 d-flex flex-row align-items-center">
-                    <CartWidget />
+                    <CartWidget cart={cart} />
                 </div>
             </div>
-            <MyCarousel/>
         </div>
-    )
-}
-
+    );
+};
 export default NavBar;

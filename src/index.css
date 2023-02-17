@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+h1 {
+    padding: 30px 0;
+    text-align: center;
+}
+
 .productosInicio {
     margin: 50px 0px 50px 0px;
 }
@@ -15,10 +20,10 @@
 
 .carouselItem {
     width: 100% !important;
-    height: 460px !important;  
+    height: 460px !important;
 }
 
-.d-block{
+.d-block {
     height: 100%;
     object-fit: cover;
     transition: 0.2s;
@@ -26,34 +31,181 @@
     filter: brightness(0.7)
 }
 
-.d-block:hover{
+.d-block:hover {
     filter: brightness(0.4)
 }
 
 
-.footer{
-    margin-top: 30px;
+.footer {
+    z-index: 1;
+    width: 100%;
 }
 
-.footer a{
+.footer a {
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none !important;
     color: white;
-    
+
 }
 
-.footer a p{
+.footer a p {
     margin: 0px;
     font-size: 30px;
 }
 
-.menadeco{
+.menadeco {
     padding: 5px 0px 0px 6px;
 }
 
-.ItemListContainer {
-    margin: 50px 0px 0px 0px;
+
+.boton {
+    margin: 50px 0px 50px 0px;
 }
 
+.loader {
+    position: absolute;
+    width: 130px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#325b85, #325b85),
+        linear-gradient(#46a1cb, #46a1cb), linear-gradient(#46a1cb, #46a1cb);
+    background-size: 80px 70px, 30px 50px, 30px 30px;
+    background-position: 0 0, 80px 20px, 100px 40px;
+}
+
+.loader:after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 10px solid #000;
+    box-shadow: 78px 0 0 -10px #fff, 78px 0 #000;
+    animation: wheelSk 0.75s ease-in infinite alternate;
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 0px;
+    height: 70px;
+    width: 70px;
+    background-image: linear-gradient(#fff 45px, transparent 0),
+        linear-gradient(#fff 45px, transparent 0),
+        linear-gradient(#fff 45px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 30px 4px;
+    background-position: 0px 11px, 8px 35px, 0px 60px;
+    animation: lineDropping 0.75s linear infinite;
+}
+
+@keyframes wheelSk {
+
+    0%,
+    50%,
+    100% {
+        transform: translatey(0)
+    }
+
+    30%,
+    90% {
+        transform: translatey(-3px)
+    }
+}
+
+@keyframes lineDropping {
+    0% {
+        background-position: 100px 11px, 115px 35px, 105px 60px;
+        opacity: 1;
+    }
+
+    50% {
+        background-position: 0px 11px, 20px 35px, 5px 60px
+    }
+
+    60% {
+        background-position: -30px 11px, 0px 35px, -10px 60px
+    }
+
+    75%,
+    100% {
+        background-position: -30px 11px, -30px 35px, -30px 60px;
+        opacity: 0;
+    }
+}
+
+
+.containerLoader {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000ae;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 2s;
+}
+
+.novisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+.active {
+    text-decoration: none;
+    color: #1b82d7 !important;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.imageDetail {
+    width: 480px !important;
+    height: 480px;
+
+}
+
+.ItemListContainerComponent {
+    margin-top: 100px;
+}
+
+.ItemDetailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemStockContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.classPrice{
+    display: inline-block;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.classDescription{
+    margin: 20px 0px;
+    text-align: justify !important;
+}
