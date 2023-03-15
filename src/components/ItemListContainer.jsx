@@ -9,7 +9,7 @@ const ItemListContainer = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        
+
         const promesa = new Promise((resolve) => {
             setTimeout(() => {
                 resolve(id ? products.filter(item => item.category === id) : products);
@@ -19,7 +19,7 @@ const ItemListContainer = () => {
             setItems(respuesta);
         });
     }, [id]);
-    
+
     return (
         items.length > 0 ?
             <div className="container">

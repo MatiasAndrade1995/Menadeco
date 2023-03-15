@@ -1,6 +1,9 @@
-import {useState } from "react";
+import {useState, useContext } from "react";
+import { CartContext } from "./context/Context";
 
-const ItemStock = ({ item, addToCart }) => {
+const ItemStock = ({item}) => {
+
+    const {addToCart} = useContext(CartContext)
     
     const [contadorItems, setContadorItems] = useState(1);
     const [stockTotal, setStockTotal] = useState(item.stock);
@@ -10,7 +13,6 @@ const ItemStock = ({ item, addToCart }) => {
         if ( item.stock > 1 ) {
             setContadorItems(contadorItems + 1);
             item.stock --
-            console.log(item.stock)
         }
     }
 
@@ -29,6 +31,7 @@ const ItemStock = ({ item, addToCart }) => {
             setStockTotal(item.stock)
         }
     }
+
 
     return (
         <div className="container itemStockContainer">

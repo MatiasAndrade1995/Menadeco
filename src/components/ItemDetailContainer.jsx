@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import products from "./json/products.json";
 
-
-const ItemListContainer = ({ addToCart }) => {
+const ItemListContainer = () => {
     const [item, setItems] = useState([]);
     const { id } = useParams();
     useEffect(() => {
@@ -18,7 +17,7 @@ const ItemListContainer = ({ addToCart }) => {
         });
     }, [id]);
     return (
-        item.length !== 0 ? <ItemDetail item={item} addToCart={addToCart} /> : <div className="containerLoader"> <span className="loader"></span> </div>
+        item.length !== 0 ? <ItemDetail item={item} /> : <div className="containerLoader"> <span className="loader"></span> </div>
     )
 }
 

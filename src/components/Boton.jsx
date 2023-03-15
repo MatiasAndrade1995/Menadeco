@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-
 const Boton = ({ greeting }) => {
     const navigate = useNavigate()
     const handleClick = () => {
@@ -14,3 +13,4 @@ const Boton = ({ greeting }) => {
 }
 
 export default Boton;
+

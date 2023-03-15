@@ -39,7 +39,9 @@ const NavBar = ({ cart }) => {
                     </nav>
                 </div>
                 <div className="col-1 d-flex flex-row align-items-center">
-                    <CartWidget cart={cart} />
+                    <NavLink className="navbar-brand" to="/cartWidget">
+                        <CartWidget cart={cart} />
+                    </NavLink>
                 </div>
             </div>
         </div>
