@@ -249,7 +249,49 @@ body {
     font-size: 20px;
 }
 
-.cartEmpty{
+.cartEmpty {
     width: 20%;
     margin: 30px auto;
+}
+
+.formulario {
+    margin: 0 auto;
+    width: 60%;
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    padding: 20px;
+}
+
+.resumenCompra {
+    width: 40%;
+    border: 1px solid rgba(0, 0, 0, 0.168);
+    padding: 20px;
+}
+
+.containerNavbar {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.itemsResumen {
+    text-decoration: underline;
+}
+
+.compraSucces {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.iconTrash {
+    font-size: 20px;
+}
+
+.containerFinishBuy{
+    width: 20%;
+    margin: 0 auto;
+}
+
+.finishBuy {
+    font-size: 40px;
+    margin: auto;
+    padding: 15px 15px;
 }

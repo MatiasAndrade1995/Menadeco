@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-
 import { BsFillTrashFill } from "react-icons/bs";
 import { CartContext } from "./context/Context";
 
@@ -62,7 +61,7 @@ const ItemStockCart = ({ item }) => {
             </div>
             <div className="col-12 d-column  borderCartRight">
                 <h6>Quitar</h6>
-                <div className="text-center mt-4"><button className="btn btn-secondary" onClick={quitar}><BsFillTrashFill /></button></div >
+                <div className="text-center mt-4"><button className="btn btn-secondary" onClick={quitar}><BsFillTrashFill className="iconTrash" /></button></div >
             </div>
         </div>
 

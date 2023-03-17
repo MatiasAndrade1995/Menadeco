@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function MyCarousel() {
 
     return (
-
         <div className="container">
             <Carousel className="MyCarousel shadow-sm p-1 mb-5 bg-secondary rounded">
                 <Carousel.Item className="carouselItem">
@@ -24,7 +23,6 @@ function MyCarousel() {
                         <p>¡Albumnes de la temática que quieras!</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-
                 <Carousel.Item className="carouselItem">
                     <Link to={"/category/percheros"}>
                         <img

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "./context/Context";
+import { NavLink } from "react-router-dom";
 import ItemStockCart from "./ItemStockCart";
 
 const ItemListCart = () => {
@@ -31,16 +32,18 @@ const ItemListCart = () => {
                     </div>
                     <div className="col-3">
                         <h2 className="totalPayTitle">Total a pagar</h2>
-                        <div className="totalPay btn btn-primary"> ${cartTotalPrice()} </div>
+                        <div className="totalPay btn btn-primary"> ${cartTotalPrice()} </div> 
                     </div>
                     <div className="col-12 d-flex justify-content-evenly text-center mt-5 mb-5">
                         <div className="col-3">
                             <button className="btn btn-secondary" onClick={clear}>Vaciar carrito</button>
                         </div>
                         <div className="col-3">
-                            <button className="btn btn-secondary" onClick={clear}>Finalizar compra</button>
+                            <NavLink className="navbar-brand" to="/Formulario">
+                                <button className="btn btn-secondary">Finalizar compra</button>
+                            </NavLink>   
                         </div>
-                    </div>
+                    </div> 
                 </div> 
             </div>
             :

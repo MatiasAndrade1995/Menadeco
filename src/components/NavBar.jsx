@@ -6,8 +6,8 @@ const NavBar = ({ cart }) => {
     return (
         <div className="container-fluid">
             <div className="row justify-content-center p-1 mb-2 bg-light text-dark">
-                <div className="col-10 d-flex aling-items-center justify-content-between">
-                    <nav className="navbar">
+                <div className="col-10 d-flex aling-items-center">
+                    <nav className="navbar d-flex justify-content-between text-center">
                         <NavLink classnameactive="active" className="navbar-brand" to="/">
                             <img src={logo} width="200" alt="logoMenadeco" />{""}
                         </NavLink>
