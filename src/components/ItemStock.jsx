@@ -1,37 +1,35 @@
-import {useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { CartContext } from "./context/Context";
 
-const ItemStock = ({item}) => {
+const ItemStock = ({ item }) => {
 
-    const {addToCart} = useContext(CartContext)
-    
+    const { addToCart } = useContext(CartContext)
     const [contadorItems, setContadorItems] = useState(1);
     const [stockTotal, setStockTotal] = useState(item.stock);
 
 
     const sumarItem = () => {
-        if ( item.stock > 1 ) {
+        if (item.stock > 1) {
             setContadorItems(contadorItems + 1);
-            item.stock --
+            item.stock--
         }
     }
 
     const restarItem = () => {
         if (item.stock < stockTotal) {
             setContadorItems(contadorItems - 1);
-            item.stock ++
+            item.stock++
         }
     }
 
     const onAdd = () => {
         setContadorItems(1);
         if (item.stock !== 0) {
-            item.stock --
+            item.stock--
             addToCart(item, contadorItems)
             setStockTotal(item.stock)
         }
     }
-
 
     return (
         <div className="container itemStockContainer">

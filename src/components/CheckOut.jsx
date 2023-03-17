@@ -1,27 +1,42 @@
 import { useContext, useState } from "react";
 import { addDoc, collection, doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { CartContext } from "./context/Context";
+import { useNavigate } from "react-router-dom";
+
+
 
 //import products from "./json/products.json";
 
-const Formulario = () => {
+const CheckOut = () => {
 
-    const { cart, cartTotalPrice, clear} = useContext(CartContext)
+    const { cart, cartTotalPrice, clear } = useContext(CartContext)
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [orderId, setOrderId] = useState("");
     const [orderUpdated, SetOrderUpdated] = useState(false);
     const [loader, setLoader] = useState(false);
-    
+    const navigate = useNavigate();
+
+    const finish = () => {
+        setLoader(true)
+        setTimeout(() => {
+            setLoader(false)
+            clear();
+            navigate("/ThankYou")
+        }, 3000)
+        setTimeout(() => {
+            navigate("/")
+        }, 6000)
+
+    }
+
     const generateOrder = () => {
         const buyer = {
             name: name,
             email: email,
             phone: phone,
         }
-        
-          
         const total = cartTotalPrice();
         const fecha = new Date();
         const minutes = fecha.getMinutes()
@@ -36,12 +51,12 @@ const Formulario = () => {
         };
 
         const db = getFirestore();
-        
+
         const ordersCollection = collection(db, "orders")
         setLoader(true)
         addDoc(ordersCollection, order).then((data) => {
             setOrderId(data.id)
-        setLoader(false)    
+            setLoader(false)
         })
     }
 
@@ -52,15 +67,16 @@ const Formulario = () => {
         const order = doc(db, "orders", orderId)
         getDoc(order).then((data) => {
             const total = data.data().total * 1.1;
-            updateDoc(order, {total: total.toFixed(2)}).then(data => {
-                SetOrderUpdated(true); 
+            updateDoc(order, { total: total.toFixed(2) }).then(data => {
+                SetOrderUpdated(true);
             })
         })
-        }
+    }
 
-console.log(orderUpdated)
+    console.log(orderUpdated)
     return (
-        <div className="container-fluid mt-5">
+
+        cart.length > 0 ? <div className="container-fluid mt-5">
             <div className="row d-flex justify-content-center">
                 <div className="col-4">
                     <div className="formulario text-center">
@@ -87,8 +103,9 @@ console.log(orderUpdated)
                     <div>
                         <h2 className="text-center">Resumen de compra</h2>
                         {itemsCart.map(item => (
-                            <div className="col-12 d-flex justify-content-between text-center mt-3 mb-3" key={item.id}>
-                                <p className=""> * {item.name} ------------------- {item.quantity}  unidades</p>
+                            <div className="containerSummaryBuy mt-3 mb-3" key={item.id}>
+                                <img className="imageSummaryBuy shadow p-1 bg-white rounded" src={item.image} alt={item.name} />
+                                <p className="textSummaryBuy">{item.name} -- {item.quantity} unidades -- $ {item.quantity * item.price}</p>
                             </div>
                         ))}
                     </div>
@@ -108,12 +125,17 @@ console.log(orderUpdated)
                         <span className="loader"></span>
                     </div>}
                     {orderId && <div className="containerFinishBuy d-flex">
-                        <button type="button" className="btn btn-secondary finishBuy mt-5" onClick={() => clear()} >Finalizar</button>
+                        <button type="button" className="btn btn-secondary finishBuy mt-5" onClick={() => finish()} >Finalizar</button>
                     </div>}
                 </div>
             </div>
         </div>
+            :
+            <div className="alert alert-danger text-center checkOutEmpty">
+                <h1>Necesita realizar un pedido para visualizar esta página.</h1>
+            </div>
+
     )
 }
 
-export default Formulario;
+export default CheckOut;

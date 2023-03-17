@@ -245,12 +245,16 @@ body {
     margin: 20px auto;
     display: flex;
     justify-content: center;
-    width: 25%;
+    width: 45%;
     font-size: 20px;
 }
 
 .cartEmpty {
     width: 20%;
+    margin: 30px auto;
+}
+.checkOutEmpty {
+    width: 40%;
     margin: 30px auto;
 }
 
@@ -294,4 +298,26 @@ body {
     font-size: 40px;
     margin: auto;
     padding: 15px 15px;
+}
+
+
+.containerSummaryBuy{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+.imageSummaryBuy{
+    width: 70px;
+}
+
+.textSummaryBuy{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.thankYou{
+    width: 50%;
+    margin: 0 auto;
 }

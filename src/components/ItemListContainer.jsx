@@ -1,4 +1,4 @@
-import {collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
@@ -9,27 +9,6 @@ const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const { id } = useParams();
 
-    // useEffect(() => {
-
-    //     const promesa = new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve(id ? products.filter(item => item.category === id) : products);
-    //         }, 2000);
-    //     });
-    //     promesa.then((respuesta) => {
-    //         setItems(respuesta);
-    //     });
-    // }, [id]);
-
-    // useEffect(() => {   // CARGA PRODUCTOS DEL JSON LOCAL AL FIRESTORE
-    //         const db = getFirestore();
-    //         const itemsCollection = collection(db, "items")
-    //     products.forEach(item => { 
-    //             addDoc(itemsCollection, item)
-    //     }) 
-    //     console.log("Se agregaron los productos")
-    // }, []);
-
     useEffect(() => {
         const db = getFirestore();
         const itemsCollection = collection(db, "items");
@@ -38,7 +17,7 @@ const ItemListContainer = () => {
             setItems(elements.docs.map(element => ({ id: element.id, ...element.data() })));
         });
     }, [id]);
-    
+
     return (
         items.length > 0 ?
             <div className="container">

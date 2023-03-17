@@ -1,31 +1,30 @@
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "./context/Context";
 import ItemDetail from "./ItemDetail";
 // import products from "./json/products.json";
 
-const ItemListContainer = () => {
+const ItemDetailContainer = () => {
     const [item, setItems] = useState([]);
     const { id } = useParams();
 
-    // useEffect(() => {
-    //     const promesa = new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve(products.find(item => item.id === parseInt(id)));
-    //         }, 2000);
-    //     });
-    //     promesa.then((respuesta) => {
-    //         setItems(respuesta);
-    //     });
-    // }, [id]);
+
+    const { cart } = useContext(CartContext);
 
     useEffect(() => {
-        const db = getFirestore();
-        const document = doc(db, "items", id);
-        getDoc(document).then(element => {
-            setItems({ id: element.id, ...element.data() });
-        });
-    }, [id]);
+        const itemExiste = cart.find(el => el.id === id)
+        if (itemExiste) {
+            setItems(itemExiste)
+        } else {
+            const db = getFirestore();
+            const document = doc(db, "items", id);
+            getDoc(document).then(element => {
+                setItems({ id: element.id, ...element.data() });
+            });
+        }
+    }, [id, cart]);
 
     return (
         item.length !== 0 ?
@@ -34,4 +33,4 @@ const ItemListContainer = () => {
     )
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer;

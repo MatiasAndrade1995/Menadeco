@@ -7,6 +7,7 @@ const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
 
     const addToCart = (itemCaptured, contadorItems) => {
+        console.log(itemCaptured)
         if (itemCaptured.quantity === 0) {
             itemCaptured.quantity = contadorItems
             setCart([...cart, itemCaptured])
@@ -36,7 +37,6 @@ const CartContextProvider = ({ children }) => {
     }
 
     const cartTotalPrice = () => {
-
         return cart.reduce((accum, item) => accum += item.quantity * item.price, 0)
     }
 
@@ -45,7 +45,6 @@ const CartContextProvider = ({ children }) => {
             {children}
         </CartContext.Provider >
     )
-
 }
 
 export default CartContextProvider;

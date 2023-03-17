@@ -29,6 +29,7 @@ const ItemStockCart = ({ item }) => {
             item.stock--
             addToCart(item, contadorItems)
             setStockTotal(item.stock)
+
         }
     }
 
